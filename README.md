@@ -7,6 +7,7 @@
 ---
 ## 开发环境
 测试开发的环境基于<br>
+visual studio code
 python3<br>
 opentsdb<br>
 hbase1.4.3<br>
