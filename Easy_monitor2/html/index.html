@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>地网项目前端点位在线状态页</title>
+    <link rel="stylesheet" href="./dist/css/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="./dist/css/bc.grid-1.0.0.min.css"/>
+    <script src="./lib/jquery-11.1.min.js"></script>
+    <script src="./dist/bc.grid-1.0.0.min.js"></script>
+</head>
+<body>
+<div>
+    <h1 align="center">地网项目前端点位在线状态页</h1>
+    <div id="table"></div>
+</div>
+<script>
+   $(function () {
+        var grid=BCGrid.create("#table",{
+            columns: [
+                {id: 'id', name: 'id', display: 'ID', align: 'center', hide: true},
+                {name: 'hostname', display: '点位名称',enableSort: true},
+                {
+                    name: 'stats', display: '状态', render: function (item, index) {
+                    if (item.stats == 1) {
+                        return '<img src="./image/1.jpg"/>';
+                    }
+                    if (item.stats == 0) {
+                        return '<img src="./image/0.jpg"/>';
+                    }
+                }
+                ,enableSort: true},
+                {name: 'ip', display: 'IP地址',enableSort: true},
+                {name: 'timestamp', display: '状态更新时间',type:'dateTime',format:'MM/dd yyyy hh:mm:ss'}
+
+            ],
+            enablePager:true,
+            //dataSource: 'local'
+			//dataSource:'local',
+            //localData:data,
+			url: './static/data.json',
+            page:1,
+            lang:'zh',
+            pageSizeOptions: [10,50,100,200,400,500,700,1000],
+            pageSize:200,
+            pagerOption:{
+                firstText: '首页',                          //首页
+                lastText: '末页',                         //末页
+                prevText: '上一页',                          //上一页
+                nextText: '下一页',                          //下一页
+                pageInfoTpl: '当前{currentPage}/{pageCount}页，每页{pageSize}条,共{recordCount}条记录'
+            }
+        });
+
+        ///
+
+
+    });
+</script>
+</body>
+</html>
