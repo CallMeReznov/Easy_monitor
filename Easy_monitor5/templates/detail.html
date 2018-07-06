@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{{title}}</title>
+
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+<script src="../static/lib/jquery-11.1.min.js"></script>
+<script src="../static/code/highstock.js"></script>
+<script src="../static/code/modules/exporting.js"></script>
+<script src="../static/code/modules/export-data.js"></script>
+
+<div id="container" style="height: 400px; min-width: 310px"></div>
+<script type="text/javascript">
+var data ={{data|safe}}
+Highcharts.setOptions({ global: { useUTC: false } });
+$(function () {
+    // Create the chart
+    Highcharts.stockChart('container', {
+
+
+        rangeSelector: {
+            selected: 1
+        },
+
+        title: {
+            text: '{{ip}}状态历史记录'
+        },
+
+        series: [{
+            name: '{{ip}}',
+            data: data,
+            tooltip: {
+                valueDecimals: 2
+            }
+        }]
+    });
+});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+{%extends "base.html"%}
+      {%block head%}
+      {{super()}}
+      {%endblock%}
+    {%block body%}
+    <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h1 class="text-center">
+                        {{title}}
+                    </h1>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-4 column">
+                </div>
+                <div class="col-md-4 column">
+                    <form role="form" action="/monitor" method="post">
+                        <div class="form-group">                                    
+                             <label for="user">用户名</label><input type="user" class="form-control" id="user" name="username" />
+                        </div>
+                        <div class="form-group">               
+                             <label for="password">密码</label><input type="password" class="form-control" id="password" name="password" />
+                        </div>
+                        <div align="right" class="form-group">               
+                            <button  type="submit" class="btn btn-default">登陆</button>
+                        </div>
+                 
+                    </form>
+                </div>
+                <div class="col-md-4 column">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h5 class="text-center">
+                        {{info}}
+                    </h5>
+                </div>
+            </div>
+        </div>
+    {%endblock%}
