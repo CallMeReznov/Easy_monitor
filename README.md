@@ -15,6 +15,7 @@
 opentsdb的官方说至少要到3.0才会想办法支持UTF-8
 * grafana5.0.4<br>
 * [bcgrid](https://github.com/bigq517/bcgrid/)
+* [highstock](https://www.hcharts.cn)
 * msvcrt,time,socket,json,flask python模块
 #### 项目结构
 * Easy_monitor1<br>
@@ -42,6 +43,13 @@ opentsdb的官方说至少要到3.0才会想办法支持UTF-8
 添加了简单的登陆验证GET POST,引入了bootstrap框架,FLASK模板继承等新知识<br>
 现在算是一个比较简单易懂的版本了,拿到手修改cfg就能跑
 
+* Easy_monitor5<br>
+在原有基础上增加了点位监控的历史信息记录,不再只是单纯的看到当前状态<br>
+使用了 **influxdb**作为点位历史记录的数据库载体,使用的WINDOWS版本所有默认设置<br>
+还添加了动态图表 **highstock**动态显示历史记录<br>
+默认数据库名 **mydb** <br> 
+因为只是个人测试用,所以并没有添加任何鉴权设置,直接操作HTTPAPI的SQL语句如果是在线环境话是极度危险的!
+
 
 #### 作者列表
 
@@ -60,7 +68,7 @@ opentsdb的官方说至少要到3.0才会想办法支持UTF-8
 * Easy_monitor2
 * Easy_monitor3
 * Easy_monitor4
-
+* Easy_monitor5
 #### 联系方式
 
 **无可奉告**
