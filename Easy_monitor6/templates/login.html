@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="../static/frame/layui/css/layui.css">
+    <link rel="stylesheet" href="../static/frame/static/css/style.css">
+    <link rel="icon" href="../static/frame/static/image/code.png">
+</head>
+<body>
+
+<div class="login-main">
+    <header class="layui-elip">{{title}}</header>
+    <form class="layui-form" action="/login" method="POST">
+        <div class="layui-input-inline">
+            <input type="text" name="account" required lay-verify="required" placeholder="账户" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline login-btn">
+            <button type="submit" class="layui-btn">登录</button>
+        </div>
+        <hr/>
+    </form>
+</div>
+
+
+<script src="../static/frame/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['form'], function () {
+
+// 操作对象
+var form = layui.form
+        , $ = layui.jquery;
+
+// you code ...
+
+
+});
+</script>
+</body>
+</html>

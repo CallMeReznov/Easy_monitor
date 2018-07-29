@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>历史记录</title>
+  <link rel="stylesheet" href="../static/frame/layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+      <a href="/monitor">
+        <div class="layui-logo">{{title}}</div>
+        </a>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="/logout">退出</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="index">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">设备信息</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/detail">设备状态</a></dd>
+            <dd><a href="javascript:;">设备管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">系统信息</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/config">系统管理</a></dd>
+            <dd><a href="javascript:;">账户管理</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body " >
+    <!-- 内容主体区域 -->
+    <div id="main-line" style="height: 450px;"></div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © {{footer}}
+  </div>
+</div>
+<script src="../static/frame/layui/layui.js"></script>
+<script type="text/javascript" src="../static/frame/echarts/echarts.min.js"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main-line'));
+
+// 使用刚指定的配置项和数据显示图表。
+myChart.setOption({
+    dataZoom : {
+        show : true,
+        realtime: true,
+        start : 50,
+        end : 100
+    },
+    grid:{
+        width:'100%'
+    },
+    title: {
+        text: '{{ip}}在线状态'
+    },
+    tooltip: {},
+    legend: {
+        data: ['在线状态']
+    },
+    xAxis: {
+        data: {{datastat|safe}}
+    },
+    yAxis: {
+        name:'在线状态',
+        max:2,
+    },
+    series: [{
+        name: '在线状态',
+        type: 'line',
+        data: {{datatime|safe}}
+    }]
+});
+});
+</script>
+</body>
+</html>

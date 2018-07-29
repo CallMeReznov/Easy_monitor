@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>设备状态</title>
+  <link rel="stylesheet" href="../static/frame/layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <a href="/monitor">
+    <div class="layui-logo">{{title}}</div>
+    </a>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="/logout">退出</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="index">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">设备信息</a>
+          <dl class="layui-nav-child">
+            <dd><a class="layui-this" href="/detail">设备状态</a></dd>
+            <dd><a href="javascript:;">设备管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">系统信息</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/config">系统管理</a></dd>
+            <dd><a href="javascript:;">账户管理</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body " >
+    <!-- 内容主体区域 -->
+    <div class="layui-container">
+          <table  class="layui-hide" id="dateTable"></table>
+    </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © {{footer}}
+  </div>
+</div>
+<script src="../static/frame/layui/layui.js"></script>
+<script type="text/javascript" src="../static/frame/layui/layui.js"></script>
+<script type="text/javascript" src="../static/js/index.js"></script>
+<script type="text/javascript">
+
+    // layui方法
+    layui.use(['table', 'form', 'layer', 'vip_table'], function () {
+
+        // 操作对象
+        var form = layui.form
+                , table = layui.table
+                , layer = layui.layer
+                , vipTable = layui.vip_table
+                , $ = layui.jquery;
+
+        // 表格渲染
+        var tableIns = table.render({
+            elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）
+            //, height: vipTable.getFullHeight()    //容器高度
+            ,width:1270
+            , cols: [[                  //标题栏
+                  {field: 'id', title: 'ID', width: 80, sort:true, align: 'center'}
+                , {field: 'area', title: '点位区域', width: 200, sort:true, align: 'center'}
+                , {field: 'title', title: '点位名称', width: 200, sort:true, align: 'center'}
+                {% raw %}
+                , {field: 'stat', title: '点位状态', width: 100, sort:true, align: 'center', templet:'#statimg'}
+                {% endraw %}
+                , {field: 'ip', title: '点位IP', width: 150, sort:true, align: 'center'}
+                , {field: 'port', title: '点位端口', width: 120, sort:true, align: 'center'}
+                , {field: 'rem', title: '备注', width: 400, align: 'center'}                
+                , {fixed: 'right', title: '历史记录', width: 120, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
+
+            ]]
+            , id: 'dataCheck'
+            , url: '/api'
+            , page: true
+            , limits: [50, 100, 200, 400, 1000,5000]
+
+           // , loading: true
+           // , done: function (res, curr, count) {
+                //如果是异步请求数据方式，res即为你接口返回的信息。
+                //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+               // console.log(res);
+
+                //得到当前页码
+              // console.log(curr);
+
+                //得到数据总量
+              //  console.log(count);
+          // }
+        });
+
+        // 刷新
+        $('#btn-refresh').on('click', function () {
+            tableIns.reload();
+        });
+
+
+        // you code ...
+
+    });
+</script>
+<!-- 表格操作按钮集 -->
+<script type="text/html" id="barOption">
+    {% raw %}
+    <a href=../history/{{d.ip}} class="layui-btn layui-btn-mini" lay-event="detail">历史记录</a>
+    {% endraw %}
+  </script>
+  <script type="text/html" id="statimg">
+    {% raw %}
+    <div><img src="../static/image/{{d.stat}}.jpg"></div>
+    {% endraw %}
+  </script>
+  
+
+</body>
+</html>

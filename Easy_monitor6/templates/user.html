@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>系统管理</title>
+  <link rel="stylesheet" href="../static/frame/layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+      <a href="/monitor">
+        <div class="layui-logo">{{title}}</div>
+        </a>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="/logout">退出</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="index">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">设备信息</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/detail">设备状态</a></dd>
+            <dd><a href="javascript:;">设备管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">系统信息</a>
+          <dl class="layui-nav-child">
+            <dd><a class="layui-this" href="/config">系统管理</a></dd>
+            <dd><a href="javascript:;">账户管理</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body " >
+    <!-- 内容主体区域 -->
+    <div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>系统信息设置</legend>
+    </fieldset>
+    <form  class="layui-form" action="/config" method="POST">
+        <div class="layui-form-item">
+            <label class="layui-form-label">网页标题</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                <p>当前标题:{{title}}</p>
+              </div>
+            
+            <label class="layui-form-label">网页页脚</label>
+            <div class="layui-input-block">
+                <input type="text" name="footer" lay-verify="title" autocomplete="off" placeholder="请输入页脚" class="layui-input">
+                <p>当前页脚:{{footer}}</p>
+              </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+            </div>
+        </div>
+    </form>
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © {{footer}}
+  </div>
+</div>
+<script src="../static/frame/layui/layui.js"></script>
+<script type="text/javascript" src="../static/frame/echarts/echarts.min.js"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+
+</script>
+</body>
+</html>
