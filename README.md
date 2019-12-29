@@ -22,10 +22,10 @@
 #### 使用说明
 
 先生成数据库    `.\manage.py migrate`  
-在新建一个管理账户  `.\manage.py  createsuperuser`
-最后启动Django `.\manage.py runserver`  
-登陆后台[localhost](http://localhost:8000),最少添加一个设备列表保存
-配置好influxdb服务的相关配置,需要的配置写在Monitor_Ser的头几行里
-启动Monitor服务`Monitor_Ser.py`  
+在新建一个管理账户  `.\manage.py  createsuperuser`  
+最后启动Django `.\manage.py runserver`    
+登陆后台[localhost](http://localhost:8000),最少添加一个设备列表保存  
+配置好influxdb服务的相关配置,需要的配置写在Monitor_Ser的头几行里  
+启动Monitor服务`Monitor_Ser.py`     
 
- Old_version 弃用 
+ Old_version 弃用   
