@@ -1,8 +1,8 @@
 ﻿# Easy_monitor
 
---
+
 ## 介绍
-把之前Flask写的前端转到了Django上,几乎没写代码就轻松移植了过来  
+把之前Flask写的后台转到了Django上,几乎没写代码就轻松移植了过来,全部是用的是DJANGO-ADMIN自带的功能.  
 也把Ser部分重写了,influx部分直接调轮子.劲量减少代码.
 
 
