@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../static/echarts.js"></script>
+    <link rel="stylesheet" href="../../static/css/layui.css">
+</head>
+<body>
+    <div class="layui-container">  
+        <div class="layui-row">
+          <div class="layui-col-md6">
+                <div class="layui-collapse">
+                    <div class="layui-colla-item" >
+                        <h2 class="layui-colla-title">信息概况</h2>
+                        <div class="layui-colla-content layui-show" style="height: 300px;">
+                            <table class="layui-table"  >
+                                <colgroup >
+                                  <col width="50">
+                                  <col width="100">
+                                  <col>
+                                </colgroup>
+                                <tbody>
+                                  <tr>
+                                      <td>前端设备总数</td>
+                                      <td>{{count}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td>当前离线数量</td>
+                                      <td>{{offl}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td>当前在线数量</td>
+                                      <td>{{ol}}</td> 
+                                  </tr>
+                                  <tr>
+                                      <td>最后更新时间</td>
+                                      <td>[{{lasttime|safe}}]</td>
+                                    </tr>
+                                </tbody>
+                              </table>
+        
+                        </div>
+                    </div>
+                </div>
+          </div>
+        <div class="layui-collapse">
+            <div class="layui-colla-item" >
+                <h2 class="layui-colla-title">一周内在线数量</h2>
+                <div class="layui-colla-content layui-show" style="height: 300px;">
+          <div class="layui-col-md6"><div id="main-line" style="height: 300px;"></div></div>
+                </div>
+            </div>
+            </div>
+        </div>
+                    <button type="button"  onclick="jump()" class="layui-btn layui-btn-fluid">进入后台</button>
+        <script src="../../static/layui.js"></script>
+        <script>
+        function jump(){
+            window.location.href="/admin";
+        }
+        //JavaScript代码区域
+        layui.use('element', function(){
+          var element = layui.element;
+          
+          // 基于准备好的dom，初始化echarts实例
+          var myChart = echarts.init(document.getElementById('main-line'));
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption({
+            title: {
+                text: '近7天在线状态数量概况'
+            },
+            tooltip: {},
+            legend: {
+                data: ['在线数','不在线']
+            },
+            xAxis: {
+                data: ["今天","1天前","2天前","3天前","4天前","5天前","6天前"]
+            },
+            yAxis: {},
+            series: [{
+                name: '在线数',
+                type: 'bar',
+                data: {{wol}}
+            },{
+                name: '不在线',
+                type: 'bar',
+                data:  {{woffl}}
+            }]
+        });
+        });
+        </script>
+        
+       
+</body>
+</html>
