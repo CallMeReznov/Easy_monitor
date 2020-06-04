@@ -12,7 +12,7 @@
 #### 开发环境
 * Python 3.6.7
 * DBUtils==1.3
-* Django==3.0
+* Django==3.0.7
 * django-admin-view-permission==1.9
 * django-adminlte-ui==1.4.0
 * django-treebeard==4.3
