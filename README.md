@@ -3,7 +3,7 @@
 
 ## 介绍
 把之前Flask写的后台转到了Django上,几乎没写代码就轻松移植了过来,全部是用的是DJANGO-ADMIN自带的功能.  
-也把Ser部分重写了,influx部分直接调轮子.劲量减少代码
+也把Ser部分重写了,influx部分直接调轮子.尽量减少代码
 
 * 20210402  升级了一下Django,利用ZLMediaKit增加了视频调阅功能,写的很初级,属于demo性质的,如果使用请加固WEBHOOK.
 
