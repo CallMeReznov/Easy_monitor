@@ -25,6 +25,12 @@ class DeviceInfo(models.Model):
     def history(self):
         self.verbose_name= "历史"
         return  format_html('<a href="/monitor/history/%s">历史记录</a>' %(self.deviceip))
+    
+    def preview(self):
+        self.verbose_name= "视频预览"
+        return  format_html('<button type="button" onclick=preview("%s")>视频预览</button>' %(self.deviceid) )
+
+    
 
 
 

@@ -1,0 +1,37 @@
+
+    
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../static/EasyWasmPlayer.js"></script>
+    <script src="../../static/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div style="width:600px;height: 400px; background-color:pink;margin: auto;">
+        <div id="newplay" onClick="onplay"></div>
+    </div>
+    <script>
+        callbackfun = function (e) { 
+            if (e.code ==404){
+                //console.log('aaaaaaaaaaaaa');
+            }
+        }
+        // 播放按钮
+        var btn = document.getElementById('btn'); 
+        var value = document.getElementById('value');
+        var player = new WasmPlayer(null, 'newplay', callbackfun,{decodeType:"auto", openAudio:"0",
+            Height:true
+        })
+
+            player.play('http://'+document.location.hostname+'/live/{{host}}.flv',1);
+    </script>
+    {{host}}
+</body>
+</html>

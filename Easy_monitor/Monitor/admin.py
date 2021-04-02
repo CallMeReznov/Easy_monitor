@@ -7,7 +7,7 @@ from django.utils.html import format_html
 @admin.register(DeviceInfo)
 class Newadmin(admin.ModelAdmin):
 
-    list_display = ('deviceid','devicename','deviceip','devicearea','devicetype','devicestat','deviceport','deviceadt','devicerem','history')
+    list_display = ('deviceid','devicename','deviceip','devicearea','devicetype','devicestat','deviceport','deviceadt','preview','devicerem','history')
     date_hierarchy = 'deviceadt'
     list_editable =['devicerem']
     list_per_page=100
